@@ -11,4 +11,16 @@ async function readData() {
     }
 }
 
-module.exports = readData;
+async function writeData(file) {
+    try {
+        const pathFile = path.resolve('src', 'talker.json');
+        await fs.writeFile(pathFile, JSON.stringify(file));
+      } catch (err) {
+        console.error(`Erro ao ler o arquivo: ${err.message}`);
+      }
+}
+
+module.exports = {
+    readData,
+    writeData,
+};
