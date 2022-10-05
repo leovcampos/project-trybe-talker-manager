@@ -7,6 +7,7 @@ const {
     talkerById,
     addTalker,
     editTalker,
+    deleteTalker,
 } = require('../functions/talkerFunctions');
 
 const router = express.Router();
@@ -20,5 +21,7 @@ router.use(tokenChecked);
 router.post('/', validateTalker, addTalker);
 
 router.put('/:id', validateTalker, editTalker);
+
+router.delete('/:id', deleteTalker);
 
 module.exports = router;
