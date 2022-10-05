@@ -11,7 +11,7 @@ const checkEmail = (req, res, next) => {
 };
 
 const checkPassword = (req, res, next) => {
-    const password = req.body;
+    const { password } = req.body;
     if (!password) {
         return res.status(400).send({ message: 'Password obrigatório' });
     }
