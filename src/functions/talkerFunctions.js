@@ -32,8 +32,21 @@ async function addTalker(req, res) {
     res.status(201).send(newTalker);
 }
 
+async function editTalker(req, res) {
+    const talkers = await readData();
+    const { id } = req.params;
+    const talkerEdit = talkers.findIndex((talker) => talker.id === Number(id));
+    talkers[talkerEdit] = {
+        id: Number(id),
+        ...req.body,
+    };
+    await writeData(talkers);
+    res.status(200).send(talkers[talkerEdit]);
+}
+
 module.exports = {
     allTalkers,
     talkerById,
     addTalker,
+    editTalker,
 };
