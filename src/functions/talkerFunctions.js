@@ -53,10 +53,24 @@ async function deleteTalker(req, res) {
     res.status(204).send();
 }
 
+async function searchTalker(req, res) {
+    const talkers = await readData();
+    const { q } = req.query;
+
+    if (!q) {
+        return res.status(200).send(talkers);
+    }
+
+    const result = talkers.filter(({ name }) => name.includes(q));
+
+    res.status(200).send(result);
+}
+
 module.exports = {
     allTalkers,
     talkerById,
     addTalker,
     editTalker,
     deleteTalker,
+    searchTalker,
 };
