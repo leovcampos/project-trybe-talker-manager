@@ -1,9 +1,9 @@
 const express = require('express');
 const token = require('../functions/loginFunctions');
-const loginChecked = require('../middlewares/loginChecked');
+const { checkEmail, checkPassword } = require('../middlewares/loginChecked');
 
-const router = express.router();
+const router = express.Router();
 
-router.post('/', loginChecked, token);
+router.post('/', checkEmail, checkPassword, token);
 
 module.exports = router;
