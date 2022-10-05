@@ -2,7 +2,6 @@ const express = require('express');
 
 const tokenChecked = require('../middlewares/tokenChecked');
 const validateTalker = require('../middlewares/talkerChecked');
-const { checkEmail, checkPassword } = require('../middlewares/loginChecked');
 const {
     allTalkers,
     talkerById,
