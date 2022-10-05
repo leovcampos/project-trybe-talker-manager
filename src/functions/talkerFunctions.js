@@ -19,8 +19,9 @@ async function talkerById(req, res) {
 
 async function addTalker(req, res) {
     const talkers = await readData();
+
     const newTalker = {
-        id: (talkers.length - 1).id += 1,
+        id: talkers.length + 1,
         ...req.body,
     };
     await writeData([
@@ -28,7 +29,7 @@ async function addTalker(req, res) {
         newTalker,
     ]);
 
-    res.status(200).send(newTalker);
+    res.status(201).send(newTalker);
 }
 
 module.exports = {
